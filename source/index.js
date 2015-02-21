@@ -1,43 +1,56 @@
-var flatten = function(list, form, depth) {
-  form.content.forEach(function(element) {
+var Immutable = require('immutable');
+
+var flatten = function(form, list, depth) {
+  return form.get('content').reduce(function(list, element) {
     var newContainer;
-    if (element.hasOwnProperty('form')) {
+    if (typeof element.has === 'function' && element.has('form')) {
       newContainer = {
         depth: depth + 1,
-        flattened: [],
-        numbering: element.numbering
+        content: [],
+        numbering: element.get('numbering')
       };
-      if (element.summary) {
-        newContainer.summary = element.summary;
+      if (element.has('summary')) {
+        newContainer.summary = element.get('summary');
       }
-      if (element.form.conspicuous) {
-        newContainer.conspicuous = element.form.conspicuous;
+      var conspicuousKeys = ['form', 'conspicuous'];
+      if (element.hasIn(conspicuousKeys)) {
+        newContainer.conspicuous = element.getIn(conspicuousKeys);
       }
-      list.push(newContainer);
-      flatten(list, element.form, depth + 1);
+      return flatten(
+        element.get('form'),
+        list.push(Immutable.fromJS(newContainer)),
+        depth + 1
+      );
     } else {
-      var last = list[list.length - 1];
+      var last = list.last();
       if (
         !last ||
-        !last.hasOwnProperty('depth') ||
-        last.depth !== depth
+        !last.has('depth') ||
+        last.get('depth') !== depth
       ) {
-        newContainer = {depth: depth, flattened: []};
-        list.push(newContainer);
-        last = newContainer;
-        if (form.conspicuous) {
-          newContainer.conspicuous = form.conspicuous;
+        newContainer = {
+          depth: depth,
+          content: []
+        };
+        if (form.has('conspicuous')) {
+          newContainer.conspicuous = form.get('conspicuous');
         }
+        newContainer.content.push(element);
+        return list.push(Immutable.fromJS(newContainer));
+      } else {
+        var lastIndex = list.count() - 1;
+        return list.updateIn([lastIndex, 'content'], function(last) {
+          return last.push(element);
+        });
       }
-      last.flattened.push(element);
     }
-  });
-  return list;
+  }, list);
 };
 
-module.exports = function(project) {
-  project.flattened = flatten([], project.form, 1);
-  return project;
+var emptyList = Immutable.List();
+
+module.exports = function(form) {
+  return flatten(form, emptyList, 1);
 };
 
 module.exports.version = '0.1.0';
