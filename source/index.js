@@ -53,4 +53,4 @@ module.exports = function(form) {
   return flatten(form, emptyList, 1);
 };
 
-module.exports.version = '0.1.0';
+module.exports.version = '0.2.0';
