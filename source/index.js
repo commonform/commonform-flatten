@@ -3,21 +3,21 @@ var Immutable = require('immutable');
 var flatten = function(form, list, depth) {
   return form.get('content').reduce(function(list, element) {
     var newContainer;
-    if (typeof element.has === 'function' && element.has('form')) {
+    if (typeof element.has === 'function' && element.has('inclusion')) {
       newContainer = {
         depth: depth + 1,
         content: [],
         numbering: element.get('numbering')
       };
-      if (element.has('summary')) {
-        newContainer.summary = element.get('summary');
+      if (element.has('heading')) {
+        newContainer.heading = element.get('heading');
       }
-      var conspicuousKeys = ['form', 'conspicuous'];
+      var conspicuousKeys = ['inclusion', 'conspicuous'];
       if (element.hasIn(conspicuousKeys)) {
         newContainer.conspicuous = element.getIn(conspicuousKeys);
       }
       return flatten(
-        element.get('form'),
+        element.get('inclusion'),
         list.push(Immutable.fromJS(newContainer)),
         depth + 1
       );

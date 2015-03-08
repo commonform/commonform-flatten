@@ -22,16 +22,16 @@ describe('flatten', function() {
         content: [
           'before',
           {
-            summary: 'A',
-            form: {
+            heading: 'A',
+            inclusion: {
               conspicuous: 'true',
               content: [
                 'before',
-                {form: {content: ['B']}},
-                {form: {content: ['C']}},
+                {inclusion: {content: ['B']}},
+                {inclusion: {content: ['C']}},
                 'between',
-                {form: {content: ['D']}},
-                {form: {content: ['E']}},
+                {inclusion: {content: ['D']}},
+                {inclusion: {content: ['E']}},
                 'after'
               ]
             }
@@ -46,7 +46,7 @@ describe('flatten', function() {
 
     var results = [
       {depth: 1, content: ['before']},
-        {depth: 2, summary: 'A', content: ['before'],
+        {depth: 2, heading: 'A', content: ['before'],
             numbering: [num(1, 1, 1, 1)], conspicuous: 'true'},
           {depth: 3, content: ['B'], numbering: [
             num(1, 1, 1, 1), num(1, 2, 1, 2)]},
