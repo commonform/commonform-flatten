@@ -1,26 +1,20 @@
 {
   "name": "commonform-flatten",
-  "description": "flatten nested forms in Common Form projects",
+  "description": "flatten Common Forms",
   "version": "1.0.0-rc1",
-  "author": {
-    "name": "Kyle E. Mitchell",
-    "email": "kyle@kemitchell.com",
-    "url": "http://kemitchell.com/"
-  },
+  "author": "Kyle E. Mitchell <kyle@kemitchell.com> (http://kemitchell.com)",
   "dependencies": {
-    "clone": "^1.0.2"
+    "commonform-resolve": "^0.4.0"
   },
   "devDependencies": {
-    "chai": "^1.10.0",
-    "check-versions": "1.x",
-    "commonform-number": "1.x",
-    "commonform-resolve": "1.x",
+    "chai": "^2.2.0",
+    "check-versions": "^1.0.0",
     "istanbul": "^0.3.5",
     "jscs": "^1.8.1",
     "jshint": "^2.5.10",
     "mocha": "^2.0.1"
   },
-  "homepage": "https://github.com/commonform/commonform-flatten",
+  "homepage": "https://commonform.github.io",
   "keywords": [
     "contracts",
     "document assembly",
@@ -29,15 +23,12 @@
     "markup"
   ],
   "license": "Apache-2.0",
-  "main": "source/index",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/commonform/commonform-flatten.git"
-  },
+  "main": "commonform-flatten.js",
+  "repository": "commonform/commonform-flatten",
   "scripts": {
     "check": "check-versions --check-module",
     "coverage": "istanbul cover _mocha && istanbul check-coverage coverage/coverage.json",
-    "lint": "jshint source test && jscs source test",
+    "lint": "jshint commonform-flatten.js test && jscs commonform-flatten.js test",
     "pre-commit": "npm run lint && npm run check && npm run coverage",
     "test": "mocha",
     "travis-ci": "npm run pre-commit"

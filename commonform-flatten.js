@@ -1,4 +1,4 @@
-var clone = require('clone');
+var resolve = require('commonform-resolve');
 
 var flatten = function(form, list, depth) {
   return form.content.reduce(function(list, element) {
@@ -42,8 +42,8 @@ var flatten = function(form, list, depth) {
   }, list);
 };
 
-module.exports = function(form) {
-  return flatten(clone(form), [], 1);
+module.exports = function(form, values) {
+  return flatten(resolve(form, values), [], 1);
 };
 
 module.exports.version = '1.0.0-rc1';
