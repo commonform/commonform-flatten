@@ -46,4 +46,4 @@ module.exports = function(form, values) {
   return flatten(resolve(form, values), [], 1);
 };
 
-module.exports.version = '1.0.0-rc1';
+module.exports.version = '0.4.0';
