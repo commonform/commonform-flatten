@@ -45,5 +45,3 @@ var flatten = function(form, list, depth) {
 module.exports = function(form, values) {
   return flatten(resolve(form, values), [], 1);
 };
-
-module.exports.version = '0.4.0';
