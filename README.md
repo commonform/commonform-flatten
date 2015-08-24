@@ -7,7 +7,8 @@ var assert = require('assert')
 assert.deepEqual(
   flatten(
     { content: [
-        'before',
+        'some text ',
+        { blank: 'company' },
         { heading: 'A',
           form: {
             conspicuous: 'yes',
@@ -20,9 +21,9 @@ assert.deepEqual(
               { form: { content: [ 'E' ] } },
               'after' ] } },
         'after' ] },
-    { }),
+    { company: 'NewCo' }),
   [ { depth: 1,
-      content: [ 'before' ] },
+      content: [ 'some text NewCo' ] },
     { depth: 2,
       heading: 'A',
       content: [ 'before' ],
