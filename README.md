@@ -2,51 +2,68 @@ Produces a useful intermediary representation for rendering in linear document f
 
 ```javascript
 var flatten = require('commonform-flatten')
-
-var num = function(sn, sof, en, eof) {
-  return {
-    series: { number: sn, of: sof },
-    element: { number: en, of: eof } } }
-
-var form = {
-  content: [
-    'before',
-    { heading: 'A',
-      form: {
-        conspicuous: 'yes',
-        content: [
-          'before',
-          { form: { content: [ 'B' ] } },
-          { form: { content: [ 'C' ] } },
-          'between',
-          { form: { content: [ 'D' ] } },
-          { form: { content: [ 'E' ] } },
-          'after' ] } },
-    'after' ] }
-
-var flattened = flatten(form, { })
-
-var results = [
-  { depth: 1, content: [ 'before' ] },
-    { depth: 2, heading: 'A', content: [ 'before' ],
-        numbering: [ num(1, 1, 1, 1) ], conspicuous: 'yes' },
-      { depth: 3, content: [ 'B' ], numbering: [
-        num(1, 1, 1, 1), num(1, 2, 1, 2) ] },
-      { depth: 3, content: [ 'C' ], numbering: [
-        num(1, 1, 1, 1), num(1, 2, 2, 2) ] },
-    { depth: 2, content: [ 'between' ], conspicuous: 'yes' },
-      { depth: 3, content: [ 'D' ], numbering: [
-        num(1, 1, 1, 1), num(2, 2, 1, 2) ] },
-      { depth: 3, content: [ 'E' ], numbering: [
-        num(1, 1, 1, 1), num(2, 2, 2, 2) ] },
-    { depth: 2, content: [ 'after' ], conspicuous: 'yes' },
-  { depth: 1, content: [ 'after' ] } ]
-
 var assert = require('assert')
 
-results
-  .forEach(function(object, index) {
-    assert.deepEqual(this.flattened[index], object) })
-
-assert.equal(this.flattened.length, results.length)
+assert.deepEqual(
+  flatten(
+    { content: [
+        'before',
+        { heading: 'A',
+          form: {
+            conspicuous: 'yes',
+            content: [
+              'before',
+              { form: { content: [ 'B' ] } },
+              { form: { content: [ 'C' ] } },
+              'between',
+              { form: { content: [ 'D' ] } },
+              { form: { content: [ 'E' ] } },
+              'after' ] } },
+        'after' ] },
+    { }),
+  [ { depth: 1,
+      content: [ 'before' ] },
+    { depth: 2,
+      heading: 'A',
+      content: [ 'before' ],
+      numbering: [
+        { series:  { number: 1, of: 1 },
+          element: { number: 1, of: 1 } } ],
+      conspicuous: 'yes' },
+    { depth: 3,
+      content: [ 'B' ],
+      numbering: [
+        { series:  { number: 1, of: 1 },
+          element: { number: 1, of: 1 } },
+        { series:  { number: 1, of: 2 },
+          element: { number: 1, of: 2 } } ] },
+    { depth: 3,
+      content: [ 'C' ],
+      numbering: [
+        { series:  { number: 1, of: 1 },
+          element: { number: 1, of: 1 } },
+        { series:  { number: 1, of: 2 },
+          element: { number: 2, of: 2 } } ] },
+    { depth: 2,
+      content: [ 'between' ],
+      conspicuous: 'yes' },
+    { depth: 3,
+      content: [ 'D' ],
+      numbering: [
+        { series:  { number: 1, of: 1 },
+          element: { number: 1, of: 1 } },
+        { series:  { number: 2, of: 2 },
+          element: { number: 1, of: 2 } } ] },
+    { depth: 3,
+      content: [ 'E' ],
+      numbering: [
+        { series:  { number: 1, of: 1 },
+          element: { number: 1, of: 1 } },
+        { series:  { number: 2, of: 2 },
+          element: { number: 2, of: 2 } } ] },
+    { depth: 2,
+      content: [ 'after' ],
+      conspicuous: 'yes' },
+    { depth: 1,
+      content: [ 'after' ] } ])
 ```
