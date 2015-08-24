@@ -8,11 +8,8 @@
     "commonform-resolve": "0.5.x"
   },
   "devDependencies": {
-    "chai": "^2.2.0",
-    "istanbul": "^0.3.5",
-    "jscs": "^1.8.1",
-    "jshint": "^2.5.10",
-    "mocha": "^2.0.1"
+    "defence-cli": "^1.0.1",
+    "replace-require-self": "^1.0.0"
   },
   "homepage": "https://commonform.github.io",
   "keywords": [
@@ -23,16 +20,11 @@
     "markup"
   ],
   "license": "Apache-2.0",
-  "main": "source/index",
   "peerDependencies": {
     "commonform": "1.x"
   },
   "repository": "commonform/commonform-flatten",
   "scripts": {
-    "coverage": "istanbul check-coverage --config .dotfiles/istanbul.yml coverage/coverage.json",
-    "lint": "jshint --config .dotfiles/jshint.json source test && jscs --config .dotfiles/jscs.json source test",
-    "precommit": "npm run lint && npm run coverage",
-    "precoverage": "istanbul cover --config .dotfiles/istanbul.yml -- _mocha --opts .dotfiles/mocha.opts",
-    "test": "mocha --opts .dotfiles/mocha.opts"
+    "test": "defence README.md | replace-require-self | node"
   }
 }
