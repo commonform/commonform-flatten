@@ -5,7 +5,6 @@
   "author": "Kyle E. Mitchell <kyle@kemitchell.com> (http://kemitchell.com)",
   "bugs": "https://github.com/commonform/commonform-flatten/issues",
   "dependencies": {
-    "clone": "^1.0.2",
     "commonform-resolve": "0.6.x"
   },
   "devDependencies": {
