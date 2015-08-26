@@ -1,7 +1,7 @@
 {
   "name": "commonform-flatten",
   "description": "flatten Common Forms",
-  "version": "0.5.3",
+  "version": "0.6.0",
   "author": "Kyle E. Mitchell <kyle@kemitchell.com> (http://kemitchell.com)",
   "bugs": "https://github.com/commonform/commonform-flatten/issues",
   "dependencies": {
