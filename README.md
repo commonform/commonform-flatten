@@ -20,10 +20,13 @@ assert.deepEqual(
               { form: { content: [ 'D' ] } },
               { form: { content: [ 'E' ] } },
               'after' ] } },
-        'after' ] },
+        'after',
+        { use: 'A Defined Term'} ] },
     { company: 'NewCo' }),
   [ { depth: 1,
-      content: [ 'some text NewCo' ] },
+      content: [
+        'some text ',
+        { blank: 'company', value: 'NewCo' } ] },
     { depth: 2,
       heading: 'A',
       content: [ 'before' ],
@@ -66,5 +69,7 @@ assert.deepEqual(
       content: [ 'after' ],
       conspicuous: 'yes' },
     { depth: 1,
-      content: [ 'after' ] } ])
+      content: [
+        'after',
+        { use: 'A Defined Term' } ] } ])
 ```
