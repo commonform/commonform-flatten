@@ -8,7 +8,7 @@ assert.deepEqual(
   flatten(
     { content: [
         'some text ',
-        { blank: 'company' },
+        { blank: '' },
         { heading: 'A',
           form: {
             conspicuous: 'yes',
@@ -22,11 +22,11 @@ assert.deepEqual(
               'after' ] } },
         'after',
         { use: 'A Defined Term'} ] },
-    { company: 'NewCo' }),
+    [ { blank: [ 'content', 1 ], value: 'NewCo' } ]),
   [ { depth: 1,
       content: [
         'some text ',
-        { blank: 'company', value: 'NewCo' } ] },
+        { blank: 'NewCo' } ] },
     { depth: 2,
       heading: 'A',
       content: [ 'before' ],

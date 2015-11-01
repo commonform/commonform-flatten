@@ -38,5 +38,5 @@ var flatten = function(form, list, depth) {
 
 module.exports = function(form, values) {
   if (!values) {
-    values = { } }
+    values = [ ] }
   return flatten(resolve(form, values), [ ], 1) }
