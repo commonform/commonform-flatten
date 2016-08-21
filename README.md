@@ -6,70 +6,124 @@ var assert = require('assert')
 
 assert.deepEqual(
   flatten(
-    { content: [
+    {
+      content: [
         'some text ',
-        { blank: '' },
-        { heading: 'A',
+        {blank: ''},
+        {
+          heading: 'A',
           form: {
             conspicuous: 'yes',
             content: [
               'before',
-              { form: { content: [ 'B' ] } },
-              { form: { content: [ 'C' ] } },
+              {form: {content: ['B']}},
+              {form: {content: ['C']}},
               'between',
-              { form: { content: [ 'D' ] } },
-              { form: { content: [ 'E' ] } },
-              'after' ] } },
+              {form: {content: ['D']}},
+              {form: {content: ['E']}},
+              'after'
+            ]
+          }
+        },
         'after',
-        { use: 'A Defined Term'} ] },
-    [ { blank: [ 'content', 1 ], value: 'NewCo' } ]),
-  [ { depth: 1,
+        {use: 'A Defined Term'}
+      ]
+    },
+    [{blank: ['content', 1], value: 'NewCo'}]
+  ),
+  [
+    {
+      depth: 1,
       content: [
         'some text ',
-        { blank: 'NewCo' } ] },
-    { depth: 2,
+        {blank: 'NewCo'}
+      ]
+    },
+    {
+      depth: 2,
       heading: 'A',
-      content: [ 'before' ],
+      content: ['before'],
       numbering: [
-        { series:  { number: 1, of: 1 },
-          element: { number: 1, of: 1 } } ],
-      conspicuous: 'yes' },
-    { depth: 3,
-      content: [ 'B' ],
+        {
+          series: {number: 1, of: 1},
+          element: {number: 1, of: 1}
+        }
+      ],
+      conspicuous: 'yes'
+    },
+    {
+      depth: 3,
+      content: ['B'],
       numbering: [
-        { series:  { number: 1, of: 1 },
-          element: { number: 1, of: 1 } },
-        { series:  { number: 1, of: 2 },
-          element: { number: 1, of: 2 } } ] },
-    { depth: 3,
-      content: [ 'C' ],
+        {
+          series: {number: 1, of: 1},
+          element: {number: 1, of: 1}
+        },
+        {
+          series: {number: 1, of: 2},
+          element: {number: 1, of: 2}
+        }
+      ]
+    },
+    {
+      depth: 3,
+      content: ['C'],
       numbering: [
-        { series:  { number: 1, of: 1 },
-          element: { number: 1, of: 1 } },
-        { series:  { number: 1, of: 2 },
-          element: { number: 2, of: 2 } } ] },
-    { depth: 2,
-      content: [ 'between' ],
-      conspicuous: 'yes' },
-    { depth: 3,
-      content: [ 'D' ],
+        {
+          series: {number: 1, of: 1},
+          element: {number: 1, of: 1}
+        },
+        {
+          series: {number: 1, of: 2},
+          element: {number: 2, of: 2}
+        }
+      ]
+    },
+    {
+      depth: 2,
+      content: ['between'],
+      conspicuous: 'yes'
+    },
+    {
+      depth: 3,
+      content: ['D'],
       numbering: [
-        { series:  { number: 1, of: 1 },
-          element: { number: 1, of: 1 } },
-        { series:  { number: 2, of: 2 },
-          element: { number: 1, of: 2 } } ] },
-    { depth: 3,
-      content: [ 'E' ],
+        {
+          series: {number: 1, of: 1},
+          element: {number: 1, of: 1}
+        },
+        {
+          series: {number: 2, of: 2},
+          element: {number: 1, of: 2}
+        }
+      ]
+    },
+    {
+      depth: 3,
+      content: ['E'],
       numbering: [
-        { series:  { number: 1, of: 1 },
-          element: { number: 1, of: 1 } },
-        { series:  { number: 2, of: 2 },
-          element: { number: 2, of: 2 } } ] },
-    { depth: 2,
-      content: [ 'after' ],
-      conspicuous: 'yes' },
-    { depth: 1,
+        {
+          series: {number: 1, of: 1},
+          element: {number: 1, of: 1}
+        },
+        {
+          series: {number: 2, of: 2},
+          element: {number: 2, of: 2}
+        }
+      ]
+    },
+    {
+      depth: 2,
+      content: ['after'],
+      conspicuous: 'yes'
+    },
+    {
+      depth: 1,
       content: [
         'after',
-        { use: 'A Defined Term' } ] } ])
+        {use: 'A Defined Term'}
+      ]
+    }
+  ]
+)
 ```
