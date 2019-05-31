@@ -1,3 +1,5 @@
+# commonform-flatten
+
 Produces a useful intermediary representation for rendering in linear document formats, like [Office Open XML](https://npmjs.com/package/commonform-docx) and [terminal listings](https://npmjs.com/package/commonform-terminal).
 
 ```javascript
