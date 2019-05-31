@@ -5,7 +5,7 @@
   "author": "Kyle E. Mitchell <kyle@kemitchell.com> (http://kemitchell.com)",
   "bugs": "https://github.com/commonform/commonform-flatten/issues",
   "dependencies": {
-    "commonform-resolve": "0.8.x"
+    "commonform-resolve": "^2.0.0"
   },
   "devDependencies": {
     "defence-cli": "^3.0.1",
