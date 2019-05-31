@@ -11,119 +11,119 @@ assert.deepEqual(
     {
       content: [
         'some text ',
-        {blank: ''},
+        { blank: '' },
         {
           heading: 'A',
           form: {
             conspicuous: 'yes',
             content: [
               'before',
-              {form: {content: ['B']}},
-              {form: {content: ['C']}},
+              { form: { content: [ 'B' ] } },
+              { form: { content: [ 'C' ] } },
               'between',
-              {form: {content: ['D']}},
-              {form: {content: ['E']}},
+              { form: { content: [ 'D' ] } },
+              { form: { content: [ 'E' ] } },
               'after'
             ]
           }
         },
         'after',
-        {use: 'A Defined Term'}
+        { use: 'A Defined Term' }
       ]
     },
-    [{blank: ['content', 1], value: 'NewCo'}]
+    [ { blank: [ 'content', 1 ], value: 'NewCo' } ]
   ),
   [
     {
       depth: 1,
       content: [
         'some text ',
-        {blank: 'NewCo'}
+        { blank: 'NewCo' }
       ]
     },
     {
       depth: 2,
       heading: 'A',
-      content: ['before'],
+      content: [ 'before' ],
       numbering: [
         {
-          series: {number: 1, of: 1},
-          element: {number: 1, of: 1}
+          series: { number: 1, of: 1 },
+          element: { number: 1, of: 1 }
         }
       ],
       conspicuous: 'yes'
     },
     {
       depth: 3,
-      content: ['B'],
+      content: [ 'B' ],
       numbering: [
         {
-          series: {number: 1, of: 1},
-          element: {number: 1, of: 1}
+          series: { number: 1, of: 1 },
+          element: { number: 1, of: 1 }
         },
         {
-          series: {number: 1, of: 2},
-          element: {number: 1, of: 2}
+          series: { number: 1, of: 2 },
+          element: { number: 1, of: 2 }
         }
       ]
     },
     {
       depth: 3,
-      content: ['C'],
+      content: [ 'C' ],
       numbering: [
         {
-          series: {number: 1, of: 1},
-          element: {number: 1, of: 1}
+          series: { number: 1, of: 1 },
+          element: { number: 1, of: 1 }
         },
         {
-          series: {number: 1, of: 2},
-          element: {number: 2, of: 2}
+          series: { number: 1, of: 2 },
+          element: { number: 2, of: 2 }
         }
       ]
     },
     {
       depth: 2,
-      content: ['between'],
+      content: [ 'between' ],
       conspicuous: 'yes'
     },
     {
       depth: 3,
-      content: ['D'],
+      content: [ 'D' ],
       numbering: [
         {
-          series: {number: 1, of: 1},
-          element: {number: 1, of: 1}
+          series: { number: 1, of: 1 },
+          element: { number: 1, of: 1 }
         },
         {
-          series: {number: 2, of: 2},
-          element: {number: 1, of: 2}
+          series: { number: 2, of: 2 },
+          element: { number: 1, of: 2 }
         }
       ]
     },
     {
       depth: 3,
-      content: ['E'],
+      content: [ 'E' ],
       numbering: [
         {
-          series: {number: 1, of: 1},
-          element: {number: 1, of: 1}
+          series: { number: 1, of: 1 },
+          element: { number: 1, of: 1 }
         },
         {
-          series: {number: 2, of: 2},
-          element: {number: 2, of: 2}
+          series: { number: 2, of: 2 },
+          element: { number: 2, of: 2 }
         }
       ]
     },
     {
       depth: 2,
-      content: ['after'],
+      content: [ 'after' ],
       conspicuous: 'yes'
     },
     {
       depth: 1,
       content: [
         'after',
-        {use: 'A Defined Term'}
+        { use: 'A Defined Term' }
       ]
     }
   ]
