@@ -17,6 +17,23 @@ var flatten = function (form, list, depth) {
       }
       list.push(newContainer)
       return flatten(element.form, list, depth + 1)
+    } else if (element.hasOwnProperty('repository')) {
+      newContainer = {
+        depth: depth + 1,
+        numbering: element.numbering
+      }
+      var toCopy = [
+        'heading',
+        'repository', 'publisher', 'project', 'edition',
+        'upgrade', 'substitutions'
+      ]
+      toCopy.forEach(function (key) {
+        if (element.hasOwnProperty(key)) {
+          newContainer[key] = element[key]
+        }
+      })
+      list.push(newContainer)
+      return list
     } else {
       var listLength = list.length
       var last = list[listLength - 1]

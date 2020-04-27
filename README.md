@@ -28,7 +28,19 @@ assert.deepEqual(
           }
         },
         'after',
-        { use: 'A Defined Term' }
+        { use: 'A Defined Term' },
+        {
+          heading: 'Some Component',
+          repository: 'commonform.org',
+          publisher: 'test',
+          project: 'test',
+          edition: '1e',
+          upgrade: 'yes',
+          substitutions: {
+            terms: {},
+            headings: {}
+          }
+        }
       ]
     },
     [ { blank: [ 'content', 1 ], value: 'NewCo' } ]
@@ -47,7 +59,7 @@ assert.deepEqual(
       content: [ 'before' ],
       numbering: [
         {
-          series: { number: 1, of: 1 },
+          series: { number: 1, of: 2 },
           element: { number: 1, of: 1 }
         }
       ],
@@ -58,7 +70,7 @@ assert.deepEqual(
       content: [ 'B' ],
       numbering: [
         {
-          series: { number: 1, of: 1 },
+          series: { number: 1, of: 2 },
           element: { number: 1, of: 1 }
         },
         {
@@ -72,7 +84,7 @@ assert.deepEqual(
       content: [ 'C' ],
       numbering: [
         {
-          series: { number: 1, of: 1 },
+          series: { number: 1, of: 2 },
           element: { number: 1, of: 1 }
         },
         {
@@ -91,7 +103,7 @@ assert.deepEqual(
       content: [ 'D' ],
       numbering: [
         {
-          series: { number: 1, of: 1 },
+          series: { number: 1, of: 2 },
           element: { number: 1, of: 1 }
         },
         {
@@ -105,7 +117,7 @@ assert.deepEqual(
       content: [ 'E' ],
       numbering: [
         {
-          series: { number: 1, of: 1 },
+          series: { number: 1, of: 2 },
           element: { number: 1, of: 1 }
         },
         {
@@ -124,6 +136,22 @@ assert.deepEqual(
       content: [
         'after',
         { use: 'A Defined Term' }
+      ]
+    },
+    {
+      depth: 2,
+      heading: 'Some Component',
+      repository: 'commonform.org',
+      publisher: 'test',
+      project: 'test',
+      edition: '1e',
+      upgrade: 'yes',
+      substitutions: { terms: {}, headings: {} },
+      numbering: [
+        {
+          series: { number: 2, of: 2 },
+          element: { number: 1, of: 1 }
+        }
       ]
     }
   ]
