@@ -6,7 +6,7 @@ Produces a useful intermediary representation for rendering in linear document f
 var flatten = require('commonform-flatten')
 var assert = require('assert')
 
-assert.deepEqual(
+assert.deepStrictEqual(
   flatten(
     {
       content: [
@@ -18,11 +18,11 @@ assert.deepEqual(
             conspicuous: 'yes',
             content: [
               'before',
-              { form: { content: [ 'B' ] } },
-              { form: { content: [ 'C' ] } },
+              { form: { content: ['B'] } },
+              { form: { content: ['C'] } },
               'between',
-              { form: { content: [ 'D' ] } },
-              { form: { content: [ 'E' ] } },
+              { form: { content: ['D'] } },
+              { form: { content: ['E'] } },
               'after'
             ]
           }
@@ -43,7 +43,7 @@ assert.deepEqual(
         }
       ]
     },
-    [ { blank: [ 'content', 1 ], value: 'NewCo' } ]
+    [{ blank: ['content', 1], value: 'NewCo' }]
   ),
   [
     {
@@ -56,7 +56,7 @@ assert.deepEqual(
     {
       depth: 2,
       heading: 'A',
-      content: [ 'before' ],
+      content: ['before'],
       numbering: [
         {
           series: { number: 1, of: 2 },
@@ -67,7 +67,7 @@ assert.deepEqual(
     },
     {
       depth: 3,
-      content: [ 'B' ],
+      content: ['B'],
       numbering: [
         {
           series: { number: 1, of: 2 },
@@ -81,7 +81,7 @@ assert.deepEqual(
     },
     {
       depth: 3,
-      content: [ 'C' ],
+      content: ['C'],
       numbering: [
         {
           series: { number: 1, of: 2 },
@@ -95,12 +95,12 @@ assert.deepEqual(
     },
     {
       depth: 2,
-      content: [ 'between' ],
+      content: ['between'],
       conspicuous: 'yes'
     },
     {
       depth: 3,
-      content: [ 'D' ],
+      content: ['D'],
       numbering: [
         {
           series: { number: 1, of: 2 },
@@ -114,7 +114,7 @@ assert.deepEqual(
     },
     {
       depth: 3,
-      content: [ 'E' ],
+      content: ['E'],
       numbering: [
         {
           series: { number: 1, of: 2 },
@@ -128,7 +128,7 @@ assert.deepEqual(
     },
     {
       depth: 2,
-      content: [ 'after' ],
+      content: ['after'],
       conspicuous: 'yes'
     },
     {
