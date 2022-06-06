@@ -1,34 +1,32 @@
 var resolve = require('commonform-resolve')
+var has = require('has')
+var predicate = require('commonform-predicate')
 
 var flatten = function (form, list, depth) {
   return form.content.reduce(function (list, element) {
     var newContainer
-    if (element.hasOwnProperty('form')) {
+    if (predicate.child(element)) {
       newContainer = {
         depth: depth + 1,
         content: [],
         numbering: element.numbering
       }
-      if (element.hasOwnProperty('heading')) {
+      if (has(element, 'heading')) {
         newContainer.heading = element.heading
       }
-      if (element.form.hasOwnProperty('conspicuous')) {
+      if (has(element.form, 'conspicuous')) {
         newContainer.conspicuous = element.form.conspicuous
       }
       list.push(newContainer)
       return flatten(element.form, list, depth + 1)
-    } else if (element.hasOwnProperty('repository')) {
+    } else if (predicate.component(element)) {
       newContainer = {
         depth: depth + 1,
         numbering: element.numbering
       }
-      var toCopy = [
-        'heading',
-        'repository', 'publisher', 'project', 'edition',
-        'upgrade', 'substitutions'
-      ]
+      var toCopy = ['heading', 'component', 'version', 'substitutions']
       toCopy.forEach(function (key) {
-        if (element.hasOwnProperty(key)) {
+        if (has(element, key)) {
           newContainer[key] = element[key]
         }
       })
@@ -39,7 +37,7 @@ var flatten = function (form, list, depth) {
       var last = list[listLength - 1]
       var startNew = (
         !last ||
-        !last.hasOwnProperty('depth') ||
+        !has(last, 'depth') ||
         last.depth !== depth
       )
       if (startNew) {
@@ -47,7 +45,7 @@ var flatten = function (form, list, depth) {
           depth: depth,
           content: []
         }
-        if (form.hasOwnProperty('conspicuous')) {
+        if (has(form, 'conspicuous')) {
           newContainer.conspicuous = form.conspicuous
         }
         newContainer.content.push(element)

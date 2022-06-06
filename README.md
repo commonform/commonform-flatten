@@ -31,11 +31,8 @@ assert.deepStrictEqual(
         { use: 'A Defined Term' },
         {
           heading: 'Some Component',
-          repository: 'commonform.org',
-          publisher: 'test',
-          project: 'test',
-          edition: '1e',
-          upgrade: 'yes',
+          component: 'https://example.com/component',
+          version: '1.0.0',
           substitutions: {
             terms: {},
             headings: {}
@@ -141,11 +138,8 @@ assert.deepStrictEqual(
     {
       depth: 2,
       heading: 'Some Component',
-      repository: 'commonform.org',
-      publisher: 'test',
-      project: 'test',
-      edition: '1e',
-      upgrade: 'yes',
+      component: 'https://example.com/component',
+      version: '1.0.0',
       substitutions: { terms: {}, headings: {} },
       numbering: [
         {
