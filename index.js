@@ -3,6 +3,8 @@ var has = require('has')
 var predicate = require('commonform-predicate')
 
 var flatten = function (form, list, depth) {
+  var copyFromLoaded = ['reference', 'component']
+  var copyFromComponent = ['heading', 'component', 'version', 'substitutions']
   return form.content.reduce(function (list, element) {
     var newContainer
     if (predicate.child(element)) {
@@ -17,6 +19,9 @@ var flatten = function (form, list, depth) {
       if (has(element.form, 'conspicuous')) {
         newContainer.conspicuous = element.form.conspicuous
       }
+      copyFromLoaded.forEach(function (key) {
+        if (has(element, key)) newContainer[key] = element[key]
+      })
       list.push(newContainer)
       return flatten(element.form, list, depth + 1)
     } else if (predicate.component(element)) {
@@ -24,8 +29,7 @@ var flatten = function (form, list, depth) {
         depth: depth + 1,
         numbering: element.numbering
       }
-      var toCopy = ['heading', 'component', 'version', 'substitutions']
-      toCopy.forEach(function (key) {
+      copyFromComponent.forEach(function (key) {
         if (has(element, key)) {
           newContainer[key] = element[key]
         }

@@ -151,3 +151,52 @@ assert.deepStrictEqual(
   ]
 )
 ```
+
+Preserves loaded component attributes:
+
+```javascript
+var form = { content: ['This is a test.'] }
+
+var reference = {
+  component: 'https://example.com/component',
+  version: '1.0.0',
+  substitutions: { terms: {}, headings: {} }
+}
+
+var component = {
+  publisher: 'Example Publisher',
+  name: 'Example Component',
+  version: '1.0.0'
+}
+
+assert.deepStrictEqual(
+  flatten(
+    {
+      content: [
+        {
+          heading: 'Example Component',
+          form: form,
+          component: component,
+          reference: reference
+        }
+      ]
+    },
+    [/* no blanks */]
+  ),
+  [
+    {
+      depth: 2,
+      heading: 'Example Component',
+      content: ['This is a test.'],
+      reference: reference,
+      component: component,
+      numbering: [
+        {
+          element: { number: 1, of: 1 },
+          series: { number: 1, of: 1 }
+        }
+      ]
+    }
+  ]
+)
+```
